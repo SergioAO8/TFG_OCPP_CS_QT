@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>img/charging.png</file>
+        <file>img/disponible.png</file>
+        <file>img/fallada.png</file>
+        <file>img/faulted.png</file>
+        <file>img/finishing.png</file>
+        <file>img/no_disponible.png</file>
+        <file>img/preparing.png</file>
+        <file>img/suspended_ev.png</file>
+        <file>img/suspended_evse.png</file>
+        <file>img/unknown.png</file>
+    </qresource>
+</RCC>
