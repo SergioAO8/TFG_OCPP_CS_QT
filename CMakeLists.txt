@@ -25,6 +25,11 @@ qt_add_executable(ocpp_cs_with_qt
     remotestoptransaction.h remotestoptransaction.cpp remotestoptransaction.ui
     unlockconnector.h unlockconnector.cpp unlockconnector.ui
     remotestarttransaction.h remotestarttransaction.cpp remotestarttransaction.ui
+    clearcache.h clearcache.cpp clearcache.ui
+    datatransfer.h datatransfer.cpp datatransfer.ui
+    reset.h reset.cpp reset.ui
+    getconfiguration.h getconfiguration.cpp getconfiguration.ui
+
 
 
 )
@@ -32,6 +37,7 @@ qt_add_executable(ocpp_cs_with_qt
 # Crear librería estática
 add_library(jsoncodec STATIC
     nucli_sistema/json_codec/AuthorizeConfJSON.c nucli_sistema/json_codec/AuthorizeConfJSON.h nucli_sistema/json_codec/AuthorizeReqJSON.c nucli_sistema/json_codec/AuthorizeReqJSON.h nucli_sistema/json_codec/BootNotificationConfJSON.c nucli_sistema/json_codec/BootNotificationConfJSON.h nucli_sistema/json_codec/BootNotificationReqJSON.c nucli_sistema/json_codec/BootNotificationReqJSON.h nucli_sistema/json_codec/ChangeAvailabilityConfJSON.c nucli_sistema/json_codec/ChangeAvailabilityConfJSON.h nucli_sistema/json_codec/ChangeAvailabilityReqJSON.c nucli_sistema/json_codec/ChangeAvailabilityReqJSON.h nucli_sistema/json_codec/ClearCacheConfJSON.c nucli_sistema/json_codec/ClearCacheConfJSON.h nucli_sistema/json_codec/ClearCacheReqJSON.c nucli_sistema/json_codec/ClearCacheReqJSON.h nucli_sistema/json_codec/DataTransferConfJSON.c nucli_sistema/json_codec/DataTransferConfJSON.h nucli_sistema/json_codec/DataTransferReqJSON.c nucli_sistema/json_codec/DataTransferReqJSON.h nucli_sistema/json_codec/GetConfigurationConfJSON.c nucli_sistema/json_codec/GetConfigurationConfJSON.h nucli_sistema/json_codec/GetConfigurationReqJSON.c nucli_sistema/json_codec/GetConfigurationReqJSON.h nucli_sistema/json_codec/HeartbeatConfJSON.c nucli_sistema/json_codec/HeartbeatConfJSON.h nucli_sistema/json_codec/HeartbeatReqJSON.c nucli_sistema/json_codec/HeartbeatReqJSON.h nucli_sistema/json_codec/MeterValuesConfJSON.c nucli_sistema/json_codec/MeterValuesConfJSON.h nucli_sistema/json_codec/MeterValuesReqJSON.c nucli_sistema/json_codec/MeterValuesReqJSON.h nucli_sistema/json_codec/mystrdup.c nucli_sistema/json_codec/mystrdup.h nucli_sistema/json_codec/RemoteStartTransactionConfJSON.c nucli_sistema/json_codec/RemoteStartTransactionConfJSON.h nucli_sistema/json_codec/RemoteStartTransactionReqJSON.c nucli_sistema/json_codec/RemoteStartTransactionReqJSON.h nucli_sistema/json_codec/RemoteStopTransactionConfJSON.c nucli_sistema/json_codec/RemoteStopTransactionConfJSON.h nucli_sistema/json_codec/RemoteStopTransactionReqJSON.c nucli_sistema/json_codec/RemoteStopTransactionReqJSON.h nucli_sistema/json_codec/ResetConfJSON.c nucli_sistema/json_codec/ResetConfJSON.h nucli_sistema/json_codec/ResetReqJSON.c nucli_sistema/json_codec/ResetReqJSON.h nucli_sistema/json_codec/StartTransactionConfJSON.c nucli_sistema/json_codec/StartTransactionConfJSON.h nucli_sistema/json_codec/StartTransactionReqJSON.c nucli_sistema/json_codec/StartTransactionReqJSON.h nucli_sistema/json_codec/StatusNotificationConfJSON.c nucli_sistema/json_codec/StatusNotificationConfJSON.h nucli_sistema/json_codec/StatusNotificationReqJSON.c nucli_sistema/json_codec/StatusNotificationReqJSON.h nucli_sistema/json_codec/StopTransactionConfJSON.c nucli_sistema/json_codec/StopTransactionConfJSON.h nucli_sistema/json_codec/StopTransactionReqJSON.c nucli_sistema/json_codec/StopTransactionReqJSON.h nucli_sistema/json_codec/TriggerMessageConfJSON.h nucli_sistema/json_codec/TriggerMessageReqJSON.h nucli_sistema/json_codec/UnlockConnectorConfJSON.c nucli_sistema/json_codec/UnlockConnectorConfJSON.h nucli_sistema/json_codec/UnlockConnectorReqJSON.c nucli_sistema/json_codec/UnlockConnectorReqJSON.h
+
 )
 
 target_include_directories(jsoncodec PUBLIC

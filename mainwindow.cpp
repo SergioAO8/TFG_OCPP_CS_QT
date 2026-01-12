@@ -3,9 +3,14 @@
 #include "backend_notifier.h"
 #include <QPixmap>
 #include "changeavalilability.h"
+#include "clearcache.h"
+#include "datatransfer.h"
+#include "getconfiguration.h"
 #include "remotestarttransaction.h"
 #include "remotestoptransaction.h"
+#include "reset.h"
 #include "unlockconnector.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -76,6 +81,7 @@ void MainWindow::onBootNotification(const QString &model, const QString &vendor)
 
 void MainWindow::onStatusNotification(int64_t conn1, int64_t conn2, QString id_tag1, QString id_tag2, int64_t transaction1, int64_t transaction2)
 {
+    qDebug() << "conn1: " << conn1 << '\n';
     switch (conn1) {
     case 0:
         ui->label_img_conector1->setPixmap(iconos["disponible"].scaled(100, 100, Qt::KeepAspectRatio));
@@ -102,7 +108,7 @@ void MainWindow::onStatusNotification(int64_t conn1, int64_t conn2, QString id_t
         ui->label_img_conector1->setPixmap(iconos["no_disponible"].scaled(100, 100, Qt::KeepAspectRatio));
         break;
     case 8:
-        ui->label_img_conector1->setPixmap(iconos["unknown"].scaled(100, 100, Qt::KeepAspectRatio));
+        ui->label_img_conector1->setPixmap(iconos["no_disponible"].scaled(100, 100, Qt::KeepAspectRatio));
         break;
     default:
         ui->label_img_conector1->setPixmap(iconos["unknown"].scaled(100, 100, Qt::KeepAspectRatio));
@@ -135,7 +141,7 @@ void MainWindow::onStatusNotification(int64_t conn1, int64_t conn2, QString id_t
         ui->label_img_conector2->setPixmap(iconos["no_disponible"].scaled(100, 100, Qt::KeepAspectRatio));
         break;
     case 8:
-        ui->label_img_conector2->setPixmap(iconos["unknown"].scaled(100, 100, Qt::KeepAspectRatio));
+        ui->label_img_conector2->setPixmap(iconos["no_disponible"].scaled(100, 100, Qt::KeepAspectRatio));
         break;
     default:
         ui->label_img_conector2->setPixmap(iconos["unknown"].scaled(100, 100, Qt::KeepAspectRatio));
@@ -170,6 +176,21 @@ void MainWindow::on_mostrar_operacion1_clicked()
         changeAvailability.setModal(true);
         changeAvailability.exec();
     }
+    else if (ui->operaciones1->currentText() == "ClearCache") {
+        ClearCache clearCache(1, this);
+        clearCache.setModal(true);
+        clearCache.exec();
+    }
+    else if (ui->operaciones1->currentText() == "DataTransfer") {
+        DataTransfer dataTransfer(1, this);
+        dataTransfer.setModal(true);
+        dataTransfer.exec();
+    }
+    else if (ui->operaciones1->currentText() == "GetConfiguration") {
+        GetConfiguration getConfiguration(1, this);
+        getConfiguration.setModal(true);
+        getConfiguration.exec();
+    }
     else if (ui->operaciones1->currentText() == "RemoteStartTransaction") {
         RemoteStartTransaction remoteStartTransaction(1, this);
         remoteStartTransaction.setModal(true);
@@ -179,6 +200,11 @@ void MainWindow::on_mostrar_operacion1_clicked()
         RemoteStopTransaction remoteStopTransaction(1, this);
         remoteStopTransaction.setModal(true);
         remoteStopTransaction.exec();
+    }
+    else if (ui->operaciones1->currentText() == "Reset") {
+        Reset reset(1, this);
+        reset.setModal(true);
+        reset.exec();
     }
     else if (ui->operaciones1->currentText() == "UnlockConnector") {
         UnlockConnector unlockConnector(1, this);
